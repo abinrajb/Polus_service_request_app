@@ -61,7 +61,7 @@
                                 <div class="form-floating col-6 mb-3" style="margin-right: 10px;">
                                     <select class="form-control" id="selectCountry" [(ngModel)]="signupObj.country" name="country" required>
                                         <option class="mt-3" value="" disabled selected>Select your country</option>
-                                        <option *ngFor="let country of countries" [value]="country.countryCode">{{ country.countryName }}</option>
+                                        <option *ngFor="let country of countries" [ngValue]="country">{{ country.countryName }}</option>
                                     </select>
                                     <div *ngIf="map1.has('countryErrorMessage') && loginForm.submitted" class="text-danger" role="alert">
                                         {{map1.get('countryErrorMessage')}}
