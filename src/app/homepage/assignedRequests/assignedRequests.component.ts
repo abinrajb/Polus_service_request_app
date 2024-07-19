@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ElementRef, ViewChild } from '@angular/core';
+import * as bootstrap from 'bootstrap';
 
 @Component({
   selector: 'app-assignedRequests',
@@ -7,9 +8,12 @@ import { Component, OnInit } from '@angular/core';
 })
 export class AssignedRequestsComponent implements OnInit {
 
+
   constructor() { }
 
   ngOnInit() {
   }
 
+
+  
 }

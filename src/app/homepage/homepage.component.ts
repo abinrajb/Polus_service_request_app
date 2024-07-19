@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-homepage',
@@ -6,15 +7,23 @@ import { Component } from '@angular/core';
   styleUrl: './homepage.component.css'
 })
 export class HomepageComponent {
-  isSidebarVisible: boolean = false;
+
   isDropdownVisible: boolean = false;
 
-  toggleSidebar(): void {
-    this.isSidebarVisible = !this.isSidebarVisible;
-  }
+  constructor(private _router: Router) {}
 
-  toggleDropdown(event: Event): void {
+  public toggleDropdown(event: Event): void {
     event.preventDefault();
     this.isDropdownVisible = !this.isDropdownVisible;
+  }
+
+  public userProfile(event: Event): void {
+    event.preventDefault();
+    this._router.navigate(['/homepage/userPro']);
+  }
+  
+  public logout(event: Event): void {
+    event.preventDefault();
+    this._router.navigate(['/login']);
   }
 }
