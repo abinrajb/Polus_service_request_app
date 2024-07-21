@@ -9,6 +9,10 @@ import { SignupComponent } from './signup/signup.component';
 import { HomepageComponent } from './homepage/homepage.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { ErrorComponent } from './error/error.component';
+import { MakeServiceRequestComponent} from './homepage/makeServiceRequest/makeServiceRequest.component';
+import { UserprofileComponent } from './homepage/userprofile/userprofile.component';
+import { InProgressComponent } from './homepage/inProgress/inProgress.component';
+import { AssignedRequestsComponent } from './homepage/assignedRequests/assignedRequests.component';
 
 @NgModule({
   declarations: [
@@ -16,7 +20,11 @@ import { ErrorComponent } from './error/error.component';
     LoginComponent,
     SignupComponent,
     HomepageComponent,
-    ErrorComponent
+    ErrorComponent,
+    MakeServiceRequestComponent,
+    UserprofileComponent,
+    InProgressComponent,
+    AssignedRequestsComponent
   ],
   imports: [
     BrowserModule,
@@ -24,7 +32,7 @@ import { ErrorComponent } from './error/error.component';
     FormsModule,
     ReactiveFormsModule,
     HttpClientModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
   ],
   providers: [
     provideClientHydration()

@@ -1,40 +1,88 @@
 <div class="container-fluid">
-  <div class="row">
-    <nav class="col-md-3 col-lg-2 d-md-block bg-dark sidebar" [class.show]="isSidebarVisible">
-      <div class="position-sticky">
-        <ul class="nav flex-column">
-          <li class="nav-item">
-            <a class="nav-link active" aria-current="page" href="#">Home</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" routerLink="msr">Create Service Request</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" routerLink="ip">Request Inprogress</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" routerLink="ar">Request Assigned</a>
-          </li>
-          <li class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle" id="dropdown01" (click)="toggleDropdown($event)">Admin Dashboard</a>
-            <ul class="dropdown-menu" [class.show]="isDropdownVisible" aria-labelledby="dropdown01">
-              <li><a class="conColor dropdown-item" routerLink="msr">Create Service Request</a></li>
-              <li><a class="conColor dropdown-item" routerLink="ip">Request Inprogress</a></li>
-              <li><a class="conColor dropdown-item" routerLink="ar">Request Assigned</a></li>
-            </ul>
-          </li>
-        </ul>
-      </div>
-    </nav>
-    
-    <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
-     <router-outlet></router-outlet>
-    </main>
-  </div>
+    <div class="row">
+        <!-- Main Navbar -->
+        <nav class="navbar navbar-dark bg-dark fixed-top px-3" aria-label="Main navigation bar">
+            <div>
+                <img class="me-2" width="40" height="40" src="polus-logo-mono.png" alt="Polus Logo">
+                <a class="navbar-brand title" href="#">SupportSuite</a>
+            </div>
+            <div class="d-flex justify-content-end align-items-center ms-auto">
+                <button class="navbar-toggler me-2" id="userProfileButton" type="button" (click)="userProfile($event)" aria-label="User Profile">
+                    <span class="bi bi-person-fill"></span>
+                </button>
+                <button class="navbar-toggler" id="logoutButton" type="button" (click)="logout($event)" aria-label="Logout">
+                    <span class="bi bi-box-arrow-right"></span>
+                </button>
+            </div>
+        </nav>
+
+        <!-- Sidebar -->
+        <nav class="col-md-3 col-lg-2 d-md-block bg-dark sidebar d-none d-md-block" aria-label="Sidebar">
+            <div class="position-sticky">
+                <ul class="nav flex-column">
+                    <li class="nav-item">
+                        <a class="nav-link active" routerLinkActive="active" aria-current="page" (click)="userProfile($event)">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" routerLink="makeReq" routerLinkActive="active">Create Service Request</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" routerLink="inPro" routerLinkActive="active">Request In Progress</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" routerLink="assignedReq" routerLinkActive="active">Request Assigned</a>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" id="dropdown01" (click)="toggleDropdown($event)" aria-expanded="false" aria-haspopup="true">Admin Dashboard</a>
+                        <ul class="dropdown-menu" [class.show]="isDropdownVisible" aria-labelledby="dropdown01">
+                            <li><a class="dropdown-item" routerLink="msr">Create Service Request</a></li>
+                            <li><a class="dropdown-item" routerLink="ip">Request In Progress</a></li>
+                            <li><a class="dropdown-item" routerLink="ar">Request Assigned</a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+
+        <!-- Secondary Navbar for Smaller Screens -->
+        <nav class="navbar navbar-dark bg-dark d-md-none mt-5" aria-label="Secondary navigation bar">
+            <div class="container-fluid">
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSidebar" aria-controls="navbarSidebar" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarSidebar">
+                    <ul class="navbar-nav">
+                        <li class="nav-item">
+                            <a class="nav-link active" routerLinkActive="active" aria-current="page" (click)="userProfile($event)">Home</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" routerLink="makeReq" routerLinkActive="active">Create Service Request</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" routerLink="inPro" routerLinkActive="active">Request In Progress</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" routerLink="assignedReq" routerLinkActive="active">Request Assigned</a>
+                        </li>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" id="dropdown02" (click)="toggleDropdown($event)" aria-expanded="false" aria-haspopup="true">Admin Dashboard</a>
+                            <ul class="dropdown-menu" [class.show]="isDropdownVisible" aria-labelledby="dropdown02">
+                                <li><a class="dropdown-item" routerLink="msr">Create Service Request</a></li>
+                                <li><a class="dropdown-item" routerLink="ip">Request In Progress</a></li>
+                                <li><a class="dropdown-item" routerLink="ar">Request Assigned</a></li>
+                            </ul>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+
+        <!-- Main Content -->
+        <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4" style="margin-top: 70px;" aria-label="Main content area">
+            <router-outlet></router-outlet>
+        </main>
+    </div>
 </div>
-
-
-
 
 
 

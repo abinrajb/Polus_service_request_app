@@ -1,3 +1,96 @@
-<p>
-  inProgress works!
-</p>
+<div *ngFor="let ticket of inProgressTickets" class="ticket-card row d-flex justify-content-center mb-3">
+  <div class="card col-10 text-center">
+    <div class="card-header">
+      {{ ticket?.category.categoryName }}
+    </div>
+    <div class="card-body">
+      <h5 class="card-title">{{ ticket?.category.categoryName }}</h5>
+      <p class="card-text">{{ ticket?.requestDescription }}</p>
+      <p class="card-text">{{ ticket?.statusDescription.statusDescription }}</p>
+      <div class="row d-flex justify-content-center">
+        <button class="btn btn-dark col-2 col-md-2 me-1" title="Edit Ticket" (click)="currentTicket(ticket)"
+          data-bs-toggle="modal" data-bs-target="#editTicketPopUp" aria-label="Edit Ticket">
+          <i class="bi bi-pencil-square"></i> <span class="d-none d-md-inline">Edit</span>
+        </button>
+        <button class="btn btn-danger col-2 col-md-2 me-1" title="Delete Ticket" (click)="deleteTicket(ticket.ticketId)" aria-label="Delete Ticket">
+          <i class="bi bi-trash"></i><span class="d-none d-md-inline">Delete</span>
+        </button>
+        <button type="button" class="btn btn-success col-2 col-md-2 me-1" title="Submit Ticket" data-bs-toggle="modal"
+          data-bs-target="#submitTicketPopUp" aria-label="Submit Ticket">
+          <i class="bi bi-check2"></i><span class="d-none d-md-inline">Submit</span>
+        </button>
+      </div>
+    </div>
+    <div class="card-footer text-muted">
+      {{ getTime(ticket.createTimestamp) }}
+    </div>
+  </div>
+</div>
+
+<div class="modal fade" id="editTicketPopUp" tabindex="-1" aria-labelledby="editTicketPopUpLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5" id="editTicketPopUpLabel">Edit Ticket</h1>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <form class="form form-control-sm shadow-lg p-3 rounded" aria-label="Edit Ticket Form">
+          <div class="row mb-2">
+            <div class="col-3 col-sm-12">
+              <label class="form-label" for="service_type">Service Type</label>
+            </div>
+            <div class="col-9 col-sm-12">
+              <select class="form-control" id="selectService" [(ngModel)]="editReqObjPayload.category" name="select service" required aria-required="true">
+                <option value="" disabled selected>Select service</option>
+                <option *ngFor="let category of categories" [ngValue]="category.categoryCode">{{ category.categoryName }}</option>
+              </select>
+            </div>
+          </div>
+          <div class="row mb-2">
+            <div class="col-3 col-sm-12">
+              <label class="form-label" for="description">Description</label>
+            </div>
+            <div class="col-9 col-sm-12">
+              <textarea class="form-control" id="description" rows="5" [(ngModel)]="editReqObjPayload.requestDescription"
+                name="description" aria-label="Enter a description of the service you require" aria-required="true" required></textarea>
+            </div>
+          </div>
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" title="Close" data-bs-dismiss="modal" aria-label="Close Edit Ticket Modal">Close</button>
+        <button type="button" class="btn btn-success" title="Save Changes" (click)="saveChanges()" aria-label="Save Changes">Save</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="modal fade" id="submitTicketPopUp" aria-labelledby="submitTicketPopUpLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5" id="submitTicketPopUpLabel">Submit Ticket</h1>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <h6>Select an admin from the below options and click submit to assign the service ticket</h6>
+        <div class="row mb-2 align-items-center">
+          <div class="col-3">
+            <label for="selectAdmin" class="form-label mb-0">Assign Admin</label>
+          </div>
+          <div class="col-9">
+            <select class="form-control" id="selectAdmin" name="select admin" [(ngModel)]="assignTicketObj.assignedTo" required aria-required="true">
+              <option value="" disabled selected>Select admin</option>
+              <option *ngFor="let admin of administrator" [ngValue]="admin.personId">{{ admin.firstName + ' ' + admin.lastName }}</option>
+            </select>
+          </div>
+        </div>
+        <div class="d-flex justify-content-end">
+          <button type="button" class="btn btn-secondary me-1" title="Close" data-bs-dismiss="modal" aria-label="Close Submit Ticket Modal">Close</button>
+          <!-- <button type="button" class="btn btn-dark" title="Submit Ticket" (click)="assignTicket()" aria-label="Submit Ticket">Submit</button> -->
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

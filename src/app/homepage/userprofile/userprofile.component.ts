@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { SharedService } from '../../shared.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-userprofile',
@@ -7,9 +9,18 @@ import { Component, OnInit } from '@angular/core';
 })
 export class UserprofileComponent implements OnInit {
 
-  constructor() { }
+    loggedInUser: any;
+    isEditMode: boolean = false;
 
-  ngOnInit() {
-  }
+    constructor(private _sharedService: SharedService, 
+                private _router: Router) {}
+
+    ngOnInit(): void {
+        this.loggedInUser = this._sharedService.getLoggedInUser();
+    }
 
 }
+
+
+
+

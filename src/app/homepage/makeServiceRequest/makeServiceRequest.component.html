@@ -1,3 +1,44 @@
-<p>
-  makeServiceRequest works!
-</p>
+<div class="container mt-5">
+    <div class="row justify-content-center">
+      <div class="col-md-8">
+        <div class="card">
+          <div class="card-header bg-dark text-white">
+            <h4>Make a Service Request</h4>
+          </div>
+          <div class="card-body">
+            <form class="row g-3" aria-label="Service Request Form">
+              <div class="col-md-3 d-flex align-items-center">
+                <label for="selectService" class="form-label mb-0">Select Service</label>
+              </div>
+              <div class="col-md-9">
+                <select class="form-control" id="selectService" name="select service" [(ngModel)]="selectService" required aria-required="true">
+                  <option value="" disabled selected>Select service</option>
+                  <option *ngFor="let category of categories" [ngValue]="category">{{ category.categoryName }}</option>
+                </select>
+              </div>
+  
+              <div *ngIf="errorMap.has('descriptionErrorMessage')" class="col-12 alert alert-danger" role="alert">
+                {{errorMap.get('descriptionErrorMessage')}}
+              </div>
+        
+              <div class="col-12">
+                <label for="serviceDescription" class="form-label">Service Description</label>
+                <textarea class="form-control" name="serviceDescription" [(ngModel)]="makeReqObj.requestDescription"
+                          id="serviceDescription" required aria-required="true" aria-label="Service Description"></textarea>
+              </div>
+  
+              <div class="col-md-12 text-end">
+                <button class="btn btn-dark me-2" name="button" (click)="addInProgress()" type="button" aria-label="Add Service Request">
+                  <i class="bi bi-check2"></i> Add
+                </button>
+                <button class="btn btn-danger" type="button" (click)="clearForm()" aria-label="Clear Form">
+                  <i class="bi bi-trash"></i> Clear
+                </button>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  

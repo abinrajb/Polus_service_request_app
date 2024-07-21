@@ -14,7 +14,7 @@
                 </div>
                 <div class="col-12 col-md-6 d-flex align-items-center">
                     <div class="card-body p-3 p-md-4 p-xl-5 w-100">
-                        <form novalidate #loginForm="ngForm" aria-labelledby="signupPageTitle">
+                        <form novalidate #signupForm="ngForm" aria-labelledby="signupPageTitle">
                             <div class="row">
                                 <div class="col-12">
                                     <div class="mb-5">
@@ -28,24 +28,24 @@
                                         name="signupObj.username" placeholder="Username" required aria-required="true"
                                         aria-label="Username">
                                     <label for="SignupUserName">Username</label>
-                                    <div *ngIf="this.map1.get('UserNameErrorMessage') && loginForm.submitted" class="text-danger small" role="alert">
-                                        {{map1.get('UserNameErrorMessage')}}
+                                    <div *ngIf="errorMap.has('UserNameErrorMessage') && signupForm.submitted" class="text-danger small" role="alert">
+                                        {{errorMap.get('UserNameErrorMessage')}}
                                     </div>
                                 </div>
                                 <div class="form-floating" style="margin-right: 10px;">
                                     <input type="text" class="form-control" id="SignupFirstName" [(ngModel)]="signupObj.firstName"
                                         name="firstname" placeholder="Firstname" required aria-required="true" aria-label="Firstname">
                                     <label for="SignupFirstName">Firstname</label>
-                                    <div *ngIf="map1.has('firstNameErrorMessage') && loginForm.submitted" class="text-danger small" role="alert">
-                                        {{map1.get('firstNameErrorMessage')}}
+                                    <div *ngIf="errorMap.has('firstNameErrorMessage') && signupForm.submitted" class="text-danger small" role="alert">
+                                        {{errorMap.get('firstNameErrorMessage')}}
                                     </div>
                                 </div>
                                 <div class="form-floating mb-3">
                                     <input type="text" class="form-control" id="signupLastName" [(ngModel)]="signupObj.lastName"
                                         name="lastname" placeholder="Lastname" required aria-required="true" aria-label="Lastname">
                                     <label for="signupLastName">Lastname</label>
-                                    <div *ngIf="map1.has('LastNameErrorMessage') && loginForm.submitted" class="text-danger small" role="alert">
-                                        {{map1.get('LastNameErrorMessage')}}
+                                    <div *ngIf="errorMap.has('LastNameErrorMessage') && signupForm.submitted" class="text-danger small" role="alert">
+                                        {{errorMap.get('LastNameErrorMessage')}}
                                     </div>
                                 </div>
                             </div>
@@ -53,26 +53,26 @@
                                 <input type="email" class="form-control" id="SignupEmail" [(ngModel)]="signupObj.email" name="email"
                                     placeholder="name@example.com" required aria-required="true" aria-label="Email address">
                                 <label for="SignupEmail">Email address</label>
-                                <div *ngIf="loginForm.submitted && map1.has('emailErrorMessage')" class="text-danger small" role="alert">
-                                    {{map1.get('emailErrorMessage')}}
+                                <div *ngIf="errorMap.has('emailErrorMessage') && signupForm.submitted" class="text-danger small" role="alert">
+                                    {{errorMap.get('emailErrorMessage')}}
                                 </div>
                             </div>
                             <div class="d-flex column g-0 justify-content-between">
                                 <div class="form-floating col-6 mb-3" style="margin-right: 10px;">
-                                    <select class="form-control" id="selectCountry" [(ngModel)]="signupObj.country" name="country" required>
-                                        <option class="mt-3" value="" disabled selected>Select your country</option>
-                                        <option *ngFor="let country of countries" [ngValue]="country">{{ country.countryName }}</option>
+                                    <select class="form-control" id="selectCountry" [(ngModel)]="countryObj" name="country" required>
+                                        <option class="mt-3" value="" disabled>Select your country</option>
+                                        <option *ngFor="let country of countries" [ngValue]="country.countryCode">{{ country.countryName }}</option>
                                     </select>
-                                    <div *ngIf="map1.has('countryErrorMessage') && loginForm.submitted" class="text-danger" role="alert">
-                                        {{map1.get('countryErrorMessage')}}
+                                    <div *ngIf="errorMap.has('countryErrorMessage') && signupForm.submitted" class="text-danger" role="alert">
+                                        {{errorMap.get('countryErrorMessage')}}
                                     </div>
                                 </div>
                                 <div class="form-floating col-6 mb-3" style="margin-right: 10px;">
                                     <input type="text" class="form-control" id="signupPhnNo" [(ngModel)]="signupObj.phoneNo"
                                         name="phonenumber" placeholder="Phone Number" required aria-required="true" aria-label="Phone Number">
                                     <label for="signupPhnNo">Phone Number</label>
-                                    <div *ngIf="!signupObj.phonenumber && map1.has('phoneNoerrorMessage') && loginForm.submitted" class="text-danger small" role="alert">
-                                        {{map1.get('phoneNoerrorMessage')}}
+                                    <div *ngIf="errorMap.has('phoneNoerrorMessage') && signupForm.submitted" class="text-danger small" role="alert">
+                                        {{errorMap.get('phoneNoerrorMessage')}}
                                     </div>
                                 </div>
                             </div>
@@ -80,8 +80,8 @@
                                 <input type="text" class="form-control" id="signupAddress" [(ngModel)]="signupObj.address"
                                     name="address" placeholder="Address" required aria-required="true" aria-label="Address">
                                 <label for="signupAddress">Address</label>
-                                <div *ngIf="map1.has('addressErrorMessage') && loginForm.submitted" class="text-danger small" role="alert">
-                                    {{map1.get('addressErrorMessage')}}
+                                <div *ngIf="errorMap.has('addressErrorMessage') && signupForm.submitted" class="text-danger small" role="alert">
+                                    {{errorMap.get('addressErrorMessage')}}
                                 </div>
                             </div>
                             <div class="d-flex column justify-content-center">
@@ -89,8 +89,8 @@
                                     <input type="password" class="form-control" id="SignupNewPassword" [(ngModel)]="signupObj.password"
                                         name="newPassword" placeholder="New Password" required aria-required="true" aria-label="New Password">
                                     <label for="SignupNewPassword">New Password</label>
-                                    <div *ngIf="map1.has('newPasswordErrorMessage') && loginForm.submitted" class="text-danger small" role="alert">
-                                        {{map1.get('newPasswordErrorMessage')}}
+                                    <div *ngIf="errorMap.has('newPasswordErrorMessage') && signupForm.submitted" class="text-danger small" role="alert">
+                                        {{errorMap.get('newPasswordErrorMessage')}}
                                     </div>
                                 </div>
                                 <div class="form-floating col-6 mb-3" style="margin-right: 10px;">
@@ -98,13 +98,13 @@
                                         [(ngModel)]="signupConfirmPassword" name="confirmPassword" placeholder="Confirm Password"
                                         required aria-required="true" aria-label="Confirm Password">
                                     <label for="SignupCnfrmPassword">Confirm Password</label>
-                                    <div *ngIf="map1.has('ConfirmPasswordErrorMessage') && loginForm.submitted" class="text-danger small" role="alert">
-                                        {{map1.get('ConfirmPasswordErrorMessage')}}
+                                    <div *ngIf="errorMap.has('ConfirmPasswordErrorMessage') && signupForm.submitted" class="text-danger small" role="alert">
+                                        {{errorMap.get('ConfirmPasswordErrorMessage')}}
                                     </div>
                                 </div>
                             </div>
                             <div class="form-floating mb-3">Have an account? <a routerLink="/login" aria-label="Login">Login</a></div>
-                            <button class="w-100 btn btn-lg btn-primary mb-3" (click)="signupValue()" type="submit">
+                            <button class="w-100 btn btn-lg btn-primary mb-3" (click)="signupValidate()" type="submit">
                                 Sign up
                             </button>
                         </form>

@@ -1,0 +1,38 @@
+
+export interface Country {
+    countryCode: string;
+    countryName: string;
+    currencyCode: string;
+    updateTimestamp: Date;
+    updateUser: string;
+    countryCodeIso2: string;
+}
+
+export interface Category {
+  categoryCode: string;
+  categoryName: string;
+  description: string;
+}
+
+export interface Admins{
+  personId: string,
+  firstName: string,
+  lastName: string
+}
+
+export interface StatusDescription {
+  statusCode: string;
+  statusDescription: string;
+}
+
+export interface Ticket {
+  ticketId: number;
+  category: Category | null;
+  requestDescription: string;
+  statusDescription: StatusDescription | null;
+  assignedTo: string | null;
+  createTimestamp: string;
+  updateTimestamp: string;
+}
+
+

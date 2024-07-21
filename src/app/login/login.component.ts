@@ -1,4 +1,4 @@
-import { Component, inject } from '@angular/core';
+import { Component, inject, OnInit } from '@angular/core';
 import { SharedService } from '../shared.service';
 import { Router } from '@angular/router';
 
@@ -7,8 +7,7 @@ import { Router } from '@angular/router';
     templateUrl: './login.component.html',
     styleUrls: ['./login.component.css'],
 })
-export class LoginComponent {
-    private router = inject(Router);
+export class LoginComponent implements OnInit {
     map1 = new Map<string, string>();
     isResponseSent: boolean = true;
     passwordFieldType: string = 'password';
@@ -18,7 +17,12 @@ export class LoginComponent {
         password: ''
     };
 
-    constructor(private sharedService: SharedService) {
+    constructor(private sharedService: SharedService, private router: Router) {
+    }
+
+    ngOnInit() {
+        this.loginObj.userName = 'shylam';
+        this.loginObj.password = 'password123'
     }
 
     private displayErrorMessage(key: string, value: string): void {
@@ -46,9 +50,8 @@ export class LoginComponent {
 
         this.sharedService.login(this.loginObj).subscribe({
             next: (response: any) => {
-                console.log('Login successful', response);
-                // Handle successful login, e.g., navigate to home page
-                this.router.navigate(['/home']);
+                this.sharedService.setLoggedInUser(response);
+                this.router.navigate(['/homepage/makeReq']);
             },
             error: (err) => {
                 console.error('Login failed', err);

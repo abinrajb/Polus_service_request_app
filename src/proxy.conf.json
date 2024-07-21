@@ -16,5 +16,41 @@
     "secure": false,
     "changeOrigin": true,
     "pathRewrite": {"^/count" : ""}
+  },
+  "/service": {
+    "target": "http://10.199.100.141:8080/api/getAllServiceCategories",
+    "secure": false,
+    "changeOrigin": true,
+    "pathRewrite": {"^/service" : ""}
+  },
+  "/getAllAdmins": {
+    "target": "http://10.199.100.141:8080/api/getAllAdmins",
+    "secure": false,
+    "changeOrigin": true,
+    "pathRewrite": {"^/getAllAdmins" : ""}
+  },
+  "/makeServiceRequest": {
+    "target": "http://10.199.100.141:8080/api/createOrEditServiceTicket",
+    "secure": false,
+    "changeOrigin": true,
+    "pathRewrite": {"^/makeServiceRequest" : ""}
+  },
+  "/getAllIn-progressTickets": {
+    "target": "http://10.199.100.141:8080/api/getServiceTickets",
+    "secure": false,
+    "changeOrigin": true,
+    "pathRewrite": {"^/getAllIn-progressTickets" : ""}
+  },
+  "/deleteTicket": {
+    "target": "http://10.199.100.141:8080/api/deleteServiceTicket",
+    "secure": false,
+    "changeOrigin": true,
+    "pathRewrite": {"^/deleteTicket" : ""}
+  },
+  "/assignTicket": {
+    "target": "http://10.199.100.141:8080/api/ticketStatusChangeToAssigned",
+    "secure": false,
+    "changeOrigin": true,
+    "pathRewrite": {"^/assignTicket" : ""}
   }
 }
