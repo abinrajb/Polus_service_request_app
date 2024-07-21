@@ -1,7 +1,7 @@
 import { Component, inject, OnInit } from '@angular/core';
 import { SharedService } from '../shared.service';
 import { Router } from '@angular/router';
-
+import { LoginObj } from '../interface';
 @Component({
     selector: 'app-login',
     templateUrl: './login.component.html',
@@ -12,7 +12,7 @@ export class LoginComponent implements OnInit {
     isResponseSent: boolean = true;
     passwordFieldType: string = 'password';
 
-    loginObj: any = {
+    loginObj: LoginObj = {
         userName: '',
         password: ''
     };

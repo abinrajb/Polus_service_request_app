@@ -1,3 +1,7 @@
+export interface LoginObj {
+  userName: string;
+  password: string;
+}
 
 export interface Country {
     countryCode: string;

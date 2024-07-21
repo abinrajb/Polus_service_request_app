@@ -145,12 +145,12 @@ export class InProgressComponent implements OnInit {
         });
     }
 
-    // public assignTicket(): void{
-    //     this._sharedService.assignTicket(this.assignTicketObj).subscribe({ 
-    //         next: (response: any) => {
-    //             console.log(response);
-    //         }
-    //     });
-    // }
+    public assignTicket(): void{
+        this._sharedService.assignTicket(this.assignTicketObj).subscribe({ 
+            next: (response: any) => {
+                console.log(response);
+            }
+        });
+    }
 
 }
