@@ -1,4 +1,5 @@
 import { NgModule } from '@angular/core';
+import { NgIf } from '@angular/common';
 import { BrowserModule, provideClientHydration } from '@angular/platform-browser';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -13,6 +14,9 @@ import { MakeServiceRequestComponent} from './homepage/makeServiceRequest/makeSe
 import { UserprofileComponent } from './homepage/userprofile/userprofile.component';
 import { InProgressComponent } from './homepage/inProgress/inProgress.component';
 import { AssignedRequestsComponent } from './homepage/assignedRequests/assignedRequests.component';
+import { IndexPageComponent } from './homepage/indexPage/indexPage.component';
+import { AdminDashboardComponent } from './homepage/adminDashboard/adminDashboard.component';
+import { AllRequestsComponent } from './homepage/allRequests/allRequests.component';
 
 @NgModule({
   declarations: [
@@ -24,7 +28,10 @@ import { AssignedRequestsComponent } from './homepage/assignedRequests/assignedR
     MakeServiceRequestComponent,
     UserprofileComponent,
     InProgressComponent,
-    AssignedRequestsComponent
+    AssignedRequestsComponent,
+    IndexPageComponent,
+    AdminDashboardComponent,
+    AllRequestsComponent
   ],
   imports: [
     BrowserModule,
@@ -33,6 +40,7 @@ import { AssignedRequestsComponent } from './homepage/assignedRequests/assignedR
     ReactiveFormsModule,
     HttpClientModule,
     ReactiveFormsModule,
+    NgIf
   ],
   providers: [
     provideClientHydration()

@@ -52,5 +52,17 @@
     "secure": false,
     "changeOrigin": true,
     "pathRewrite": {"^/assignTicket" : ""}
+  },
+  "/getAllRequestCount": {
+    "target": "http://10.199.100.141:8080/api/getAllRequestCountsByPersonID",
+    "secure": false,
+    "changeOrigin": true,
+    "pathRewrite": {"^/getAllRequestCount" : ""}
+  },
+  "/getAllTickets": {
+    "target": "http://10.199.100.141:8080/api/getAllServiceTicketsByPersonID",
+    "secure": false,
+    "changeOrigin": true,
+    "pathRewrite": {"^/getAllTickets" : ""}
   }
 }

@@ -8,6 +8,9 @@ import { AssignedRequestsComponent } from './homepage/assignedRequests/assignedR
 import { InProgressComponent } from './homepage/inProgress/inProgress.component';
 import { UserprofileComponent } from './homepage/userprofile/userprofile.component';
 import { MakeServiceRequestComponent } from './homepage/makeServiceRequest/makeServiceRequest.component';
+import { AdminDashboardComponent } from './homepage/adminDashboard/adminDashboard.component';
+import { IndexPageComponent } from './homepage/indexPage/indexPage.component';
+import { AllRequestsComponent } from './homepage/allRequests/allRequests.component';
 
 
 const routes: Routes = [
@@ -21,6 +24,9 @@ const routes: Routes = [
             { path: 'makeReq', component: MakeServiceRequestComponent },
             { path: 'inPro', component: InProgressComponent },
             { path: 'assignedReq', component: AssignedRequestsComponent },
+            { path:'AdminDashboard', component: AdminDashboardComponent},
+            { path:'indexPage', component: IndexPageComponent},
+            { path:'AllRequests', component: AllRequestsComponent}
         ]
     },
     { path: 'error', component: ErrorComponent },

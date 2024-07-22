@@ -62,13 +62,23 @@ export class SharedService {
     }
 
     getAllInProgressTicket(): Observable<InproInterface> {
-        return this._http.get<InproInterface>(`/getAllIn-progressTickets/${this.loggedInUser.personId}/1/0/5`);
+        return this._http.get<InproInterface>(`/getAllIn-progressTickets/${this.loggedInUser.personId}/1/0/20`);
+    }
+
+    getAllAssignedTicket(): Observable<InproInterface> {
+        return this._http.get<InproInterface>(`/getAllIn-progressTickets/${this.loggedInUser.personId}/2/0/20`);
     }
 
     assignTicket(assignPayLoad: any): Observable<any> {
         return this._http.post<any>(`assignTicket`,assignPayLoad)
     }
 
+    getAllRequestCount() : Observable<InproInterface> {
+        return this._http.get<InproInterface>(`/getAllRequestCount/${this.loggedInUser.personId}`);
+    }
 
+    getAllTickets() : Observable<InproInterface> {
+        return this._http.get<InproInterface>(`/getAllTickets/${this.loggedInUser.personId}`);
+    }
 
 }

@@ -51,7 +51,7 @@ export class LoginComponent implements OnInit {
         this.sharedService.login(this.loginObj).subscribe({
             next: (response: any) => {
                 this.sharedService.setLoggedInUser(response);
-                this.router.navigate(['/homepage/makeReq']);
+                this.router.navigate(['/homepage']);
             },
             error: (err) => {
                 console.error('Login failed', err);

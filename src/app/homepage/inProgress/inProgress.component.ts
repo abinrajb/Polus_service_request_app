@@ -34,7 +34,6 @@ export class InProgressComponent implements OnInit {
     ngOnInit() {
         this.getCategories();
         this.loggedInUser = this._sharedService.getLoggedInUser();
-        // this.requestInitialize();
         this.loadInProgressTickets();
         this.getAdmin();
     }
@@ -74,7 +73,7 @@ export class InProgressComponent implements OnInit {
         }
     }
 
-    private loadInProgressTickets() {
+    public loadInProgressTickets() {
         this._sharedService.getAllInProgressTicket().subscribe({
             next: (response: any) => {
                 this.inProgressTickets = response;

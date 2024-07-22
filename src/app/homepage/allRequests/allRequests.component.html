@@ -1,4 +1,5 @@
-<h3 class="d-flex justify-content-start">Assigned Requests</h3>
+
+<h3 class="d-flex justify-content-start">Requests InProgress</h3>
 <div class="table-responsive">
   <table class="table table-striped table-hover align-middle mb-0 bg-white">
     <thead class="bg-light">
@@ -12,14 +13,14 @@
       </tr>
     </thead>
     <tbody>
-      <tr *ngFor="let ticket of allAssignedTickets" class="ticket-card">
+      <tr *ngFor="let ticket of AllTickets" class="ticket-card">
         <td>
           <div class="d-flex align-items-center">
             <img
               src="https://th.bing.com/th?id=OIP.f3DM2upCo-p_NPRwBAwbKQHaHa&w=250&h=250&c=8&rs=1&qlt=90&o=6&pid=3.1&rm=2"
               alt=""
               style="width: 45px; height: 45px"
-              class="rounded-circle"
+              class="rounded-circle img-fluid"
             />
           </div>
         </td>
@@ -28,13 +29,20 @@
         </td>
         <td>{{ ticket?.requestDescription }}</td>
         <td>
-          <span class="badge text-bg-info">{{ ticket?.statusDescription.statusDescription }}</span>
-        </td>
-        <td> {{ getTime(ticket.createTimestamp) }}</td>
-        <td>
-          {{ ticket?.assignedTo.firstName +' '+ ticket?.assignedTo.lastName}}
+            <span class="badge" [ngClass]="{
+              'text-bg-info': ticket?.statusDescription.statusDescription === 'Assigned',
+              'text-bg-warning': ticket?.statusDescription.statusDescription === 'In Progress'
+            }">
+              {{ ticket?.statusDescription.statusDescription }}
+            </span>
+          </td>   
+        <td>{{ getTime(ticket.createTimestamp) }}</td>
+        <td *ngIf="ticket.assignedTo !== null">
+           {{ticket.assignedTo?.firstName+" "+ticket.assignedTo?.lastName}}
         </td>
       </tr>
     </tbody>
   </table>
 </div>
+
+  
