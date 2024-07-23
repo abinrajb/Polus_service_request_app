@@ -1,7 +1,8 @@
 import { Component, OnInit, ElementRef, ViewChild } from '@angular/core';
 import * as bootstrap from 'bootstrap';
 import { SharedService } from '../../shared.service';
-
+import { TicketFetchPayLoad } from '../../interface';
+import { Route, Router } from '@angular/router';
 @Component({
   selector: 'app-assignedRequests',
   templateUrl: './assignedRequests.component.html',
@@ -10,15 +11,55 @@ import { SharedService } from '../../shared.service';
 export class AssignedRequestsComponent implements OnInit {
 
     allAssignedTickets: any = [];
+    loggedInUser: any;
+    pageNumber:number=0;
+    allRequestCount: any ={}
+    totalPages: number = 0;
   
-    constructor(private _sharedService: SharedService) { }
+    constructor(private _sharedService: SharedService, private _router: Router) { }
   
     ngOnInit() {
+      this.checkUserAuthentication()
+      this.loggedInUser = this._sharedService.getLoggedInUser(); 
       this.loadALLAssignedTickets(); 
+      this.getAllRequestCount();
     }
-    
+
+    private checkUserAuthentication(): void {
+        const isLoggedIn = !!this._sharedService.getLoggedInUser();
+        if (!isLoggedIn) {
+          this._router.navigate(['/login']);
+        }
+      }
+
+    public pageNumberFun(page:number) {
+        this.pageNumber=page;
+        this.loadALLAssignedTickets();
+    }
+
+    private getAllRequestCount(): void{
+        this._sharedService.getAllRequestCount().subscribe({
+         next: (response: any) => {
+             this.allRequestCount=response;
+             const totalRequestCount = response.assignedRequests; 
+             this.totalPages = Math.ceil(totalRequestCount / 10);
+             this.loadALLAssignedTickets();
+         },
+         error: (err) => {
+     
+            }
+        });
+    }  
+
     private loadALLAssignedTickets() {
-      this._sharedService.getAllAssignedTicket().subscribe({
+        const ticketFetchPayLoad: TicketFetchPayLoad = {
+            personID: this.loggedInUser.personId,
+            statusType: 2,
+            pageNumber: this.pageNumber,
+            pageSize: 10
+        };
+      
+      this._sharedService.getAllAssignedTicket(ticketFetchPayLoad).subscribe({
         next: (response: any) => {
           this.allAssignedTickets = response;
         },
@@ -53,5 +94,9 @@ export class AssignedRequestsComponent implements OnInit {
       } else {
           return SECONDSAGO === 1 ? '1 second ago' : `${SECONDSAGO} seconds ago`;
       }
+    }
+
+    public getPagesArray(): number[] {
+        return Array.from({ length: this.totalPages }, (_, i) => i);
     }
 }

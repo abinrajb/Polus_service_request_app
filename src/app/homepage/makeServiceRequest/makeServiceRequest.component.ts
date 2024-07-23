@@ -1,7 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, AfterViewInit } from '@angular/core';
 import { SharedService } from '../../shared.service';
 import { Router } from '@angular/router';
 import { Category } from '../../interface';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-makeServiceRequest',
@@ -14,9 +15,10 @@ export class MakeServiceRequestComponent implements OnInit {
 
   loggedInUser: any;
   categories: Category[] = [];
-  selectService: any ={}
-  isResponseSent: boolean=true;
+  selectService: any = {};
+  isResponseSent: boolean = true;
   errorMap = new Map<string, string>();
+  showInProgressComponent: boolean = false;
 
   makeReqObj: any = {
     category: '',
@@ -25,8 +27,16 @@ export class MakeServiceRequestComponent implements OnInit {
   };
 
   ngOnInit() {
+    this.checkUserAuthentication()
     this.getCategories();
     this.loggedInUser = this._sharedService.getLoggedInUser();
+  }
+
+  private checkUserAuthentication(): void {
+    const isLoggedIn = !!this._sharedService.getLoggedInUser();
+    if (!isLoggedIn) {
+      this._router.navigate(['/login']);
+    }
   }
 
   private displayErrorMessage(key: string, value: string): void {
@@ -45,39 +55,53 @@ export class MakeServiceRequestComponent implements OnInit {
     });
   }
 
-  private requestInitialize(): void{
+  private requestInitialize(): void {
     this.makeReqObj.personId = this.loggedInUser.personId;
     this.makeReqObj.category = this.selectService.categoryCode;
   }
 
-  
-  public addInProgress(): void{
-    this.requestInitialize(); 
-    this.errorMap.clear(); 
+  public addInProgress(): void {
+    this.requestInitialize();
+    this.errorMap.clear();
 
     if (!this.makeReqObj.requestDescription) {
       this.displayErrorMessage('descriptionErrorMessage', 'Please select a service to continue.');
-    } 
-
-    if(this.isResponseSent){
-      this._sharedService.makeServiceRequest(this.makeReqObj).subscribe({
-            next: (response: any) => {
-            
-            },
-            error: (err) => {
-
-            }
-        });
+      return;
     }
 
+    if (this.isResponseSent) {
+      this._sharedService.makeServiceRequest(this.makeReqObj).subscribe({
+        next: (response: any) => {
+          this.showInProgressComponent = true;
+          this.scrollToElement('inProgressComponent');
+        },
+        error: (err) => {
+          console.error('Failed to make service request', err);
+        }
+      });
+    }
+    Swal.fire({
+        position: "center",
+        icon: "success",
+        title: "New Service Ticket Added",
+        showConfirmButton: false,
+        timer: 1500
+      });
+  }
+
+  public scrollToElement(elementId: string) {
+    const element = document.getElementById(elementId);
+    if (element) {
+      element.scrollIntoView({ behavior: 'smooth', block: 'center' });
+    }
   }
 
   public clearForm(): void {
     this.makeReqObj = {
       category: '',
       requestDescription: '',
-      admin: ''
+      personId: null
     };
-    this.errorMap.clear(); 
+    this.errorMap.clear();
   }
 }

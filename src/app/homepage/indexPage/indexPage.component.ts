@@ -12,15 +12,24 @@ export class IndexPageComponent implements OnInit {
   allRequestCount: any ={}
 
 
-  constructor(private _sharedService : SharedService, private router: Router) { }
+  constructor(private _sharedService : SharedService, private _router: Router) { }
 
   ngOnInit() {
+    this.checkUserAuthentication()
     this.getAllRequestCount();
   }
 
-  goToMakeServiceRequest() {
-    this.router.navigate(['homepage/makeReq']);
+  private checkUserAuthentication(): void {
+    const isLoggedIn = !!this._sharedService.getLoggedInUser();
+    if (!isLoggedIn) {
+      this._router.navigate(['/login']);
+    }
   }
+
+  public goToMakeServiceRequest() {
+    this._router.navigate(['homepage/makeReq']);
+  }
+
   private getAllRequestCount(): void{
    this._sharedService.getAllRequestCount().subscribe({
     next: (response: any) => {
@@ -28,7 +37,13 @@ export class IndexPageComponent implements OnInit {
     },
     error: (err) => {
 
+        }
+       });
     }
-});
-  }
+    public scrollToElement(elementId: string) {
+        const element = document.getElementById(elementId);
+        if (element) {
+          element.scrollIntoView({ behavior: 'smooth', block: 'center' });
+        }
+      }
 }

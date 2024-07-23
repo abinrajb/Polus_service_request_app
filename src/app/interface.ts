@@ -20,8 +20,7 @@ export interface Category {
 
 export interface Admins{
   personId: string,
-  firstName: string,
-  lastName: string
+  name: string,
 }
 
 export interface StatusDescription {
@@ -39,4 +38,10 @@ export interface Ticket {
   updateTimestamp: string;
 }
 
+export interface TicketFetchPayLoad{
+    personID:number,
+    statusType:number,
+    pageNumber:number,
+    pageSize:number
+}
 

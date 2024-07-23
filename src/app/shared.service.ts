@@ -3,6 +3,7 @@ import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { InproInterface } from './homepage/inProgress/inpro-interface';
 import { Ticket, StatusDescription, Category, Admins, Country } from './interface';
+import { Router } from '@angular/router';
 
 
 @Injectable({
@@ -14,7 +15,7 @@ export class SharedService {
     private loggedInUser: any;
     private inProgressUser: any;
 
-    constructor(private _http: HttpClient) { }
+    constructor(private _http: HttpClient, private _router: Router) { }
 
     login(loginPayload: any): Observable<any> {
         return this._http.post<any>(`/log`, loginPayload);
@@ -61,12 +62,12 @@ export class SharedService {
         return this.inProgressUser;
     }
 
-    getAllInProgressTicket(): Observable<InproInterface> {
-        return this._http.get<InproInterface>(`/getAllIn-progressTickets/${this.loggedInUser.personId}/1/0/20`);
+    getAllInProgressTicket(ticketFetchPayLoad:any): Observable<InproInterface> {
+        return this._http.post<InproInterface>(`/getAllIn-progressTickets`,ticketFetchPayLoad);
     }
 
-    getAllAssignedTicket(): Observable<InproInterface> {
-        return this._http.get<InproInterface>(`/getAllIn-progressTickets/${this.loggedInUser.personId}/2/0/20`);
+    getAllAssignedTicket(ticketFetchPayLoad:any): Observable<InproInterface> {
+        return this._http.post<InproInterface>(`/getAllIn-progressTickets`,ticketFetchPayLoad);
     }
 
     assignTicket(assignPayLoad: any): Observable<any> {
@@ -80,5 +81,9 @@ export class SharedService {
     getAllTickets() : Observable<InproInterface> {
         return this._http.get<InproInterface>(`/getAllTickets/${this.loggedInUser.personId}`);
     }
+
+    clearUserSession() {
+        this.loggedInUser = null;
+      }
 
 }

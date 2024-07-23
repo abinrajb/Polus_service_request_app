@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { SharedService } from '../../shared.service';
-// import { NgIf } from '@angular/common';
+import { Route, Router } from '@angular/router';
 
 @Component({
   selector: 'app-allRequests',
@@ -9,10 +9,18 @@ import { SharedService } from '../../shared.service';
 })
 export class AllRequestsComponent implements OnInit {
   AllTickets: any = [];
-  constructor(public _sharedService:SharedService) { }
+  constructor(public _sharedService:SharedService, private _router: Router) { }
 
   ngOnInit() {
+    this.checkUserAuthentication();
     this.loadAllTickets();
+  }
+
+  private checkUserAuthentication(): void {
+    const isLoggedIn = !!this._sharedService.getLoggedInUser();
+    if (!isLoggedIn) {
+      this._router.navigate(['/login']);
+    }
   }
 
   public loadAllTickets() {

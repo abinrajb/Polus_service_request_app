@@ -16,8 +16,16 @@ export class UserprofileComponent implements OnInit {
                 private _router: Router) {}
 
     ngOnInit(): void {
+        this.checkUserAuthentication()
         this.loggedInUser = this._sharedService.getLoggedInUser();
     }
+
+    private checkUserAuthentication(): void {
+        const isLoggedIn = !!this._sharedService.getLoggedInUser();
+        if (!isLoggedIn) {
+          this._router.navigate(['/login']);
+        }
+      }
 
 }
 

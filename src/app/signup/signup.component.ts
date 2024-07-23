@@ -2,6 +2,8 @@ import { Component, inject, OnInit } from '@angular/core';
 import { SharedService } from '../shared.service';
 import { Router } from '@angular/router';
 import { Country } from '../interface';
+import Swal from 'sweetalert2';
+
 @Component({
     selector: 'app-signup',
     templateUrl: './signup.component.html',
@@ -111,9 +113,23 @@ export class SignupComponent implements OnInit {
         if (this.isResponseSent) {
             this.sharedService.signup(this.signupObj).subscribe({
                 next: (response: any) => {
+                    Swal.fire({
+                        position: "center",
+                        icon: "success",
+                        title: "New Service Ticket Added",
+                        showConfirmButton: false,
+                        timer: 1500
+                        });
                     this.router.navigate(['/login']);
                 },
                 error: (err) => {
+                    Swal.fire({
+                        position: "center",
+                        icon: "warning",
+                        title: "Invalid Signup Attempt",
+                        showConfirmButton: false,
+                        timer: 1500
+                        });
                     console.error('Signup failed', err);
                     this.router.navigate(['/signup']);
                 }

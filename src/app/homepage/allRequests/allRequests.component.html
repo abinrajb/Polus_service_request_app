@@ -25,20 +25,20 @@
           </div>
         </td>
         <td>
-          <p class="fw-bold mb-1">{{ ticket?.category.categoryName }}</p>
+          <p class="fw-bold mb-1">{{ ticket?.category?.categoryName }}</p>
         </td>
-        <td>{{ ticket?.requestDescription }}</td>
+        <td class="description">{{ ticket?.requestDescription }}</td>
         <td>
             <span class="badge" [ngClass]="{
-              'text-bg-info': ticket?.statusDescription.statusDescription === 'Assigned',
-              'text-bg-warning': ticket?.statusDescription.statusDescription === 'In Progress'
+              'text-bg-info': ticket?.statusDescription?.status === 'Assigned',
+              'text-bg-warning': ticket?.statusDescription?.status === 'In Progress'
             }">
-              {{ ticket?.statusDescription.statusDescription }}
+              {{ ticket?.statusDescription?.status }}
             </span>
           </td>   
         <td>{{ getTime(ticket.createTimestamp) }}</td>
         <td *ngIf="ticket.assignedTo !== null">
-           {{ticket.assignedTo?.firstName+" "+ticket.assignedTo?.lastName}}
+           {{ticket.assignedTo?.name}}
         </td>
       </tr>
     </tbody>

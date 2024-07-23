@@ -2,6 +2,8 @@ import { Component, inject, OnInit } from '@angular/core';
 import { SharedService } from '../shared.service';
 import { Router } from '@angular/router';
 import { LoginObj } from '../interface';
+import Swal from 'sweetalert2';
+
 @Component({
     selector: 'app-login',
     templateUrl: './login.component.html',
@@ -51,7 +53,14 @@ export class LoginComponent implements OnInit {
         this.sharedService.login(this.loginObj).subscribe({
             next: (response: any) => {
                 this.sharedService.setLoggedInUser(response);
-                this.router.navigate(['/homepage']);
+                Swal.fire({
+                    position: "center",
+                    icon: "success",
+                    title: "login Success",
+                    showConfirmButton: false,
+                    timer: 1500
+                  });
+                this.router.navigate(['/homepage/indexPage']);
             },
             error: (err) => {
                 console.error('Login failed', err);

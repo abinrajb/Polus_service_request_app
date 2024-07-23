@@ -1,5 +1,6 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { SharedService } from '../shared.service';
 
 
 @Component({
@@ -7,11 +8,23 @@ import { Router } from '@angular/router';
   templateUrl: './homepage.component.html',
   styleUrl: './homepage.component.css'
 })
-export class HomepageComponent {
+export class HomepageComponent implements OnInit{
 
   isDropdownVisible: boolean = false;
 
-  constructor(private _router: Router) {}
+  constructor(private _router: Router, private _sharedService: SharedService) {}
+  
+  ngOnInit() {
+     this.checkUserAuthentication()
+  }
+
+
+  private checkUserAuthentication(): void {
+    const isLoggedIn = !!this._sharedService.getLoggedInUser();
+    if (!isLoggedIn) {
+      this._router.navigate(['/login']);
+    }
+  }
 
   public toggleDropdown(event: Event): void {
     event.preventDefault();
@@ -25,6 +38,8 @@ export class HomepageComponent {
   
   public logout(event: Event): void {
     event.preventDefault();
+    this._sharedService.clearUserSession();
     this._router.navigate(['/login']);
   }
+
 }
