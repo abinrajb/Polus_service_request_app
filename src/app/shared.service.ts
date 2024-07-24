@@ -62,11 +62,7 @@ export class SharedService {
         return this.inProgressUser;
     }
 
-    getAllInProgressTicket(ticketFetchPayLoad:any): Observable<InproInterface> {
-        return this._http.post<InproInterface>(`/getAllIn-progressTickets`,ticketFetchPayLoad);
-    }
-
-    getAllAssignedTicket(ticketFetchPayLoad:any): Observable<InproInterface> {
+    getAllServiceTicket(ticketFetchPayLoad:any): Observable<InproInterface> {
         return this._http.post<InproInterface>(`/getAllIn-progressTickets`,ticketFetchPayLoad);
     }
 
@@ -84,6 +80,10 @@ export class SharedService {
 
     clearUserSession() {
         this.loggedInUser = null;
-      }
+    }
+
+    getAllAssignedToMe(approvedticketFetchPayLoad:any) : Observable<InproInterface>{
+        return this._http.post<InproInterface>(`/getAllApprovedRequests/${this.loggedInUser.personId}`,approvedticketFetchPayLoad);
+    }
 
 }

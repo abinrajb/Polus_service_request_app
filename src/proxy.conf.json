@@ -24,7 +24,7 @@
     "pathRewrite": {"^/service" : ""}
   },
   "/getAllAdmins": {
-    "target": "http://10.199.100.141:8080/api/getAllAdmins",
+    "target": "http://10.199.100.141:8080/api/getAllUsersByRoleId/1",
     "secure": false,
     "changeOrigin": true,
     "pathRewrite": {"^/getAllAdmins" : ""}
@@ -64,5 +64,11 @@
     "secure": false,
     "changeOrigin": true,
     "pathRewrite": {"^/getAllTickets" : ""}
+  },
+  "/getAllApprovedRequests": {
+    "target": "http://10.199.100.141:8080/api/getAllAssignedToMeTickets",
+    "secure": false,
+    "changeOrigin": true,
+    "pathRewrite": {"^/getAllApprovedRequests" : ""}
   }
 }

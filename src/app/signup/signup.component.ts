@@ -27,7 +27,7 @@ export class SignupComponent implements OnInit {
         lastName: '',
         email: '',
         country:'',
-        phoneNo: '',
+        phoneNumber: '',
         address: '',
         password: ''
     };
@@ -100,7 +100,7 @@ export class SignupComponent implements OnInit {
         if (!this.isValidEmail(this.signupObj.email)) {
             this.displayErrorMessage('emailErrorMessage', 'Please enter a valid email.');
         }
-        if (!this.isValidPhoneNumber(this.signupObj.phoneNo)) {
+        if (!this.isValidPhoneNumber(this.signupObj.phoneNumber)) {
             this.displayErrorMessage('phoneNoerrorMessage', 'Enter a valid phone number.');
         }
         if (!this.signupObj.country) {

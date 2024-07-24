@@ -99,7 +99,7 @@ export class InProgressComponent implements OnInit {
         pageSize: 10
     };
 
-    this._sharedService.getAllInProgressTicket(ticketFetchPayLoad).subscribe({
+    this._sharedService.getAllServiceTicket(ticketFetchPayLoad).subscribe({
         next: (response: any) => {
         this.inProgressTickets = response;
         },
@@ -173,6 +173,14 @@ export class InProgressComponent implements OnInit {
         this._sharedService.makeServiceRequest(this.editReqObjPayload).subscribe({
           next: (response: any) => {
             this.loadInProgressTickets();
+            Swal.fire({
+                position: "center",
+                icon: "success",
+                title: "Successfully Edited",
+                showConfirmButton: false,
+                timer: 2000
+              });
+            return; 
           },
           error: (err) => {
             console.error('Failed to update ticket', err);
@@ -200,6 +208,13 @@ export class InProgressComponent implements OnInit {
         this._sharedService.assignTicket(this.assignTicketObj).subscribe({
           next: (response: any) => {
             this.loadInProgressTickets();
+            Swal.fire({
+                position: "center",
+                icon: "success",
+                title: "Request is assigned to Administrator",
+                showConfirmButton: false,
+                timer: 2000
+              });
           }
         });
       }

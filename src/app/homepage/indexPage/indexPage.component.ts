@@ -7,10 +7,10 @@ import { Router } from '@angular/router';
   templateUrl: './indexPage.component.html',
   styleUrls: ['./indexPage.component.css']
 })
-export class IndexPageComponent implements OnInit {
-  about : string = "SupportSuite is a request handling website developed by Abin Raj B and Shyla M under the guidance of Arun Raj, John Winsley, and Sasi Kumar at Polus Solutions Private Limited.";
-  allRequestCount: any ={}
 
+export class IndexPageComponent implements OnInit {
+
+  allRequestCount: any ={}
 
   constructor(private _sharedService : SharedService, private _router: Router) { }
 

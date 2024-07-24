@@ -1,41 +1,41 @@
 <div class="card mb-3">
     <div class="card-header d-flex justify-content-between">
-        <h3>Create New Service Request</h3>
-        <a class="btn btn-success" (click)="goToMakeServiceRequest()" routerLinkActive="active">Create New Service Request</a>
+        <h3 tabindex="1">Create New Service Request</h3>
+        <a class="btn btn-success" (click)="goToMakeServiceRequest()" tabindex="1" routerLinkActive="active">Create New Service Request</a>
     </div>
 </div>
 
 <div class="row justify-content-between m-3">
     <div class="btn-group d-flex" role="group">
-        <button type="button" class="btn btn-dark position-relative col-2 me-3" (click)="scrollToElement('headingInbox')" data-bs-toggle="collapse" data-bs-target="#collapseInbox" aria-expanded="false" aria-controls="collapseInbox">
+        <button type="button" class="btn btn-dark position-relative col-2 me-3" tabIndex="1" (click)="scrollToElement('headingInbox')" data-bs-toggle="collapse" data-bs-target="#collapseInbox" aria-expanded="false" aria-controls="collapseInbox" title="show index">
             Inbox
             <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
                 {{allRequestCount.totalRequests}}
                 <span class="visually-hidden">unread messages</span>
             </span>
         </button>
-        <button type="button" class="btn btn-dark position-relative col-2 me-3" (click)="scrollToElement('headingInProgress')" data-bs-toggle="collapse" data-bs-target="#collapseInProgress" aria-expanded="true" aria-controls="collapseInProgress">
+        <button type="button" class="btn btn-dark position-relative col-2 me-3" tabIndex="1" (click)="scrollToElement('headingInProgress')" data-bs-toggle="collapse" data-bs-target="#collapseInProgress" aria-expanded="true" aria-controls="collapseInProgress" title="show InProgress">
             InProgress
             <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
                 {{allRequestCount.inProgressRequests}}
                 <span class="visually-hidden">unread messages</span>
             </span>
         </button>
-        <button type="button" class="btn btn-dark position-relative col-2 me-3" (click)="scrollToElement('headingAssigned')" data-bs-toggle="collapse" data-bs-target="#collapseAssigned" aria-expanded="false" aria-controls="collapseAssigned">
+        <button type="button" class="btn btn-dark position-relative col-2 me-3" tabIndex="1" (click)="scrollToElement('headingAssigned')" data-bs-toggle="collapse" data-bs-target="#collapseAssigned" aria-expanded="false" aria-controls="collapseAssigned" title="show Assigned">
             Assigned
             <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
                 {{allRequestCount.assignedRequests}}
                 <span class="visually-hidden">unread messages</span>
             </span>
         </button>
-        <button type="button" class="btn btn-dark position-relative col-2 me-3" data-bs-toggle="collapse" data-bs-target="#collapseApproved" aria-expanded="false" aria-controls="collapseApproved">
+        <button type="button" class="btn btn-dark position-relative col-2 me-3" tabIndex="1" data-bs-toggle="collapse" data-bs-target="#collapseApproved" aria-expanded="false" aria-controls="collapseApproved" title="show approved">
             Approved
             <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
                 {{allRequestCount.approvedRequests}}
                 <span class="visually-hidden">unread messages</span>
             </span>
         </button>
-        <button type="button" class="btn btn-dark position-relative col-2" data-bs-toggle="collapse" data-bs-target="#collapseRejected" aria-expanded="false" aria-controls="collapseRejected">
+        <button type="button" class="btn btn-dark position-relative col-2" tabIndex="1" data-bs-toggle="collapse" data-bs-target="#collapseRejected" aria-expanded="false" aria-controls="collapseRejected" title="show rejected">
             Rejected
             <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
                 {{allRequestCount.rejectedRequests}}
@@ -70,29 +70,17 @@
     <div class="accordion-item">
         <div id="collapseApproved" class="accordion-collapse collapse" aria-labelledby="headingApproved" data-bs-parent="#accordionExampleOne">
             <div class="accordion-body">
-                <!-- Content for Approved Requests -->
+                <app-approvedRequest></app-approvedRequest>
             </div>
         </div>
     </div>
     <div class="accordion-item">
         <div id="collapseRejected" class="accordion-collapse collapse" aria-labelledby="headingRejected" data-bs-parent="#accordionExampleOne">
             <div class="accordion-body">
-                <!-- Content for Rejected Requests -->
+                <app-rejectedRequest></app-rejectedRequest>
             </div>
         </div>
     </div>
-    <!-- <div class="accordion-item">
-        <h2 class="accordion-header" id="headingNewService">
-            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseNewService" aria-expanded="false" aria-controls="collapseNewService">
-                New Service Ticket
-            </button>
-        </h2>
-        <div id="collapseNewService" class="accordion-collapse collapse" aria-labelledby="headingNewService" data-bs-parent="#accordionExampleOne">
-            <div class="accordion-body">
-                <app-makeServiceRequest></app-makeServiceRequest>
-            </div>
-        </div>
-    </div> -->
 </div>
 
 

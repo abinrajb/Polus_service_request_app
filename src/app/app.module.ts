@@ -17,6 +17,9 @@ import { AssignedRequestsComponent } from './homepage/assignedRequests/assignedR
 import { IndexPageComponent } from './homepage/indexPage/indexPage.component';
 import { AdminDashboardComponent } from './homepage/adminDashboard/adminDashboard.component';
 import { AllRequestsComponent } from './homepage/allRequests/allRequests.component';
+import { ApprovedRequestComponent } from './homepage/approvedRequest/approvedRequest.component';
+import { RejectedRequestComponent } from './homepage/rejectedRequest/rejectedRequest.component';
+
 
 @NgModule({
   declarations: [
@@ -31,7 +34,9 @@ import { AllRequestsComponent } from './homepage/allRequests/allRequests.compone
     AssignedRequestsComponent,
     IndexPageComponent,
     AdminDashboardComponent,
-    AllRequestsComponent
+    AllRequestsComponent,
+    ApprovedRequestComponent,
+    RejectedRequestComponent
   ],
   imports: [
     BrowserModule,

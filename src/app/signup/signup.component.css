@@ -1,17 +1,15 @@
-.gradient-custom-2 {
-    min-height: auto;
-    background: linear-gradient(to right, #FF9190,#FDC094,#FDC094,#FF9190);
-    border-top-left-radius: 2%;
-    border-bottom-left-radius: 2%;
-}
+
 .border-light-subtle {
     border: 3px solid rgba(5, 1, 1, 0.1);
-  }
-  html, body {
+}
+html, body {
     height: 100%;
     margin: 0;
-  }
+}
   
-  .vh-100 {
+.vh-100 {
     height: 100vh;
-  }
+}
+
+
+

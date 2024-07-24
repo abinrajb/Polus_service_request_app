@@ -20,7 +20,7 @@ export interface Category {
 
 export interface Admins{
   personId: string,
-  name: string,
+  name: string
 }
 
 export interface StatusDescription {

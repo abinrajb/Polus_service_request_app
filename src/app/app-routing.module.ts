@@ -11,6 +11,8 @@ import { MakeServiceRequestComponent } from './homepage/makeServiceRequest/makeS
 import { AdminDashboardComponent } from './homepage/adminDashboard/adminDashboard.component';
 import { IndexPageComponent } from './homepage/indexPage/indexPage.component';
 import { AllRequestsComponent } from './homepage/allRequests/allRequests.component';
+import { ApprovedRequestComponent } from './homepage/approvedRequest/approvedRequest.component';
+import { RejectedRequestComponent } from './homepage/rejectedRequest/rejectedRequest.component';
 
 
 const routes: Routes = [
@@ -26,7 +28,9 @@ const routes: Routes = [
             { path: 'assignedReq', component: AssignedRequestsComponent },
             { path:'AdminDashboard', component: AdminDashboardComponent},
             { path:'indexPage', component: IndexPageComponent},
-            { path:'AllRequests', component: AllRequestsComponent}
+            { path:'AllRequests', component: AllRequestsComponent},
+            {path:'approvedRequests', component:ApprovedRequestComponent },
+            {path:'rejectedRequests', component:RejectedRequestComponent }
         ]
     },
     { path: 'error', component: ErrorComponent },
@@ -34,7 +38,7 @@ const routes: Routes = [
 ];
 
 @NgModule({
-    imports: [RouterModule.forRoot(routes)],
+    imports: [RouterModule.forRoot(routes, { useHash: true }),],
     exports: [RouterModule]
 })
 export class AppRoutingModule { }

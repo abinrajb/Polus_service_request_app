@@ -1,13 +1,14 @@
-import { Component, OnInit, ElementRef, ViewChild } from '@angular/core';
-import * as bootstrap from 'bootstrap';
+import { Component, OnInit } from '@angular/core';
 import { SharedService } from '../../shared.service';
 import { TicketFetchPayLoad } from '../../interface';
-import { Route, Router } from '@angular/router';
+import { Router } from '@angular/router';
+
 @Component({
   selector: 'app-assignedRequests',
   templateUrl: './assignedRequests.component.html',
   styleUrls: ['./assignedRequests.component.css']
 })
+
 export class AssignedRequestsComponent implements OnInit {
 
     allAssignedTickets: any = [];
@@ -30,7 +31,7 @@ export class AssignedRequestsComponent implements OnInit {
         if (!isLoggedIn) {
           this._router.navigate(['/login']);
         }
-      }
+    }
 
     public pageNumberFun(page:number) {
         this.pageNumber=page;
@@ -59,7 +60,7 @@ export class AssignedRequestsComponent implements OnInit {
             pageSize: 10
         };
       
-      this._sharedService.getAllAssignedTicket(ticketFetchPayLoad).subscribe({
+      this._sharedService.getAllServiceTicket(ticketFetchPayLoad).subscribe({
         next: (response: any) => {
           this.allAssignedTickets = response;
         },
