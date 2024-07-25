@@ -65,10 +65,10 @@
     "changeOrigin": true,
     "pathRewrite": {"^/getAllTickets" : ""}
   },
-  "/getAllApprovedRequests": {
+  "/getAllAssignedToMeTickets": {
     "target": "http://10.199.100.141:8080/api/getAllAssignedToMeTickets",
     "secure": false,
     "changeOrigin": true,
-    "pathRewrite": {"^/getAllApprovedRequests" : ""}
+    "pathRewrite": {"^/getAllAssignedToMeTickets" : ""}
   }
 }

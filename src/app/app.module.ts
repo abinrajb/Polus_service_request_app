@@ -19,6 +19,9 @@ import { AdminDashboardComponent } from './homepage/adminDashboard/adminDashboar
 import { AllRequestsComponent } from './homepage/allRequests/allRequests.component';
 import { ApprovedRequestComponent } from './homepage/approvedRequest/approvedRequest.component';
 import { RejectedRequestComponent } from './homepage/rejectedRequest/rejectedRequest.component';
+import { DashBoardComponent } from './homepage/adminDashboard/dashBoard/dashBoard.component';
+import { AddServiceComponent } from './homepage/adminDashboard/addService/addService.component';
+import { NewAdminComponent } from './homepage/adminDashboard/newAdmin/newAdmin.component';
 
 
 @NgModule({
@@ -36,7 +39,10 @@ import { RejectedRequestComponent } from './homepage/rejectedRequest/rejectedReq
     AdminDashboardComponent,
     AllRequestsComponent,
     ApprovedRequestComponent,
-    RejectedRequestComponent
+    RejectedRequestComponent,
+    NewAdminComponent,
+    AddServiceComponent,
+    DashBoardComponent
   ],
   imports: [
     BrowserModule,

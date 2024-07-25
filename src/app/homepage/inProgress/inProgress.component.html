@@ -19,9 +19,7 @@
                   <div class="d-flex align-items-center">
                     <img
                       src="https://th.bing.com/th?id=OIP.f3DM2upCo-p_NPRwBAwbKQHaHa&w=250&h=250&c=8&rs=1&qlt=90&o=6&pid=3.1&rm=2"
-                      alt=""
-                      style="width: 45px; height: 45px"
-                      class="rounded-circle img-fluid"
+                      alt="" style="width: 45px; height: 45px" class="rounded-circle img-fluid"
                     />
                   </div>
                 </td>
@@ -37,10 +35,12 @@
                   <button class="btn btn-dark p-1" title="Edit Ticket" data-bs-toggle="modal" (click)="currentTicket(ticket)" data-bs-target="#editTicketPopUp" aria-label="Edit Ticket">
                     <i class="bi bi-pencil-square"></i> <span class="d-none d-md-inline"></span>
                   </button>
-                  <button class="btn btn-danger p-1 m-2" title="Delete Ticket" (click)="setDeleteTicket(ticket.ticketId)" data-bs-toggle="modal" data-bs-target="#deleteTicketPopUp" aria-label="Delete Ticket">
+                  <button class="btn btn-danger p-1 m-2" title="Delete Ticket" (click)="setDeleteTicket(ticket.ticketId)" data-bs-toggle="modal" 
+                    data-bs-target="#deleteTicketPopUp" aria-label="Delete Ticket">
                     <i class="bi bi-trash"></i><span class="d-none d-md-inline"></span>
                   </button>
-                  <button type="button" class="btn btn-success p-1" title="Submit Ticket" (click)="currentTicket(ticket)" data-bs-toggle="modal" data-bs-target="#submitTicketPopUp" aria-label="Submit Ticket">
+                  <button type="button" class="btn btn-success p-1" title="Submit Ticket" (click)="currentTicket(ticket)" data-bs-toggle="modal" 
+                    data-bs-target="#submitTicketPopUp" aria-label="Submit Ticket">
                     <i class="bi bi-check2"></i><span class="d-none d-md-inline"></span>
                   </button>
                 </td>
@@ -118,7 +118,7 @@
         </div>
         <div class="d-flex justify-content-end">
           <button type="button" class="btn btn-dark me-1" title="Close" data-bs-dismiss="modal" tabIndex="1" aria-label="Close Submit Ticket Modal">Close</button>
-          <button type="button" class="btn btn-dark" title="Submit Ticket" (click)="assignTicket()" data-bs-dismiss="modal" tabindex="1" aria-label="Submit Ticket">Submit</button>
+          <button type="button" class="btn btn-success" title="Submit Ticket" (click)="assignTicket()" data-bs-dismiss="modal" tabindex="1" aria-label="Submit Ticket">Submit</button>
         </div>
       </div>
     </div>

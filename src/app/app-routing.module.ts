@@ -13,6 +13,9 @@ import { IndexPageComponent } from './homepage/indexPage/indexPage.component';
 import { AllRequestsComponent } from './homepage/allRequests/allRequests.component';
 import { ApprovedRequestComponent } from './homepage/approvedRequest/approvedRequest.component';
 import { RejectedRequestComponent } from './homepage/rejectedRequest/rejectedRequest.component';
+import { DashBoardComponent } from './homepage/adminDashboard/dashBoard/dashBoard.component';
+import { NewAdminComponent } from './homepage/adminDashboard/newAdmin/newAdmin.component';
+import { AddServiceComponent } from './homepage/adminDashboard/addService/addService.component';
 
 
 const routes: Routes = [
@@ -26,7 +29,13 @@ const routes: Routes = [
             { path: 'makeReq', component: MakeServiceRequestComponent },
             { path: 'inPro', component: InProgressComponent },
             { path: 'assignedReq', component: AssignedRequestsComponent },
-            { path:'AdminDashboard', component: AdminDashboardComponent},
+            { path:'AdminDashboard', component: AdminDashboardComponent,
+                children: [
+                    {path: 'dashboard', component: DashBoardComponent},
+                    {path:'newAdmin',component: NewAdminComponent},
+                    {path:'addService',component: AddServiceComponent}
+                ]
+            },
             { path:'indexPage', component: IndexPageComponent},
             { path:'AllRequests', component: AllRequestsComponent},
             {path:'approvedRequests', component:ApprovedRequestComponent },

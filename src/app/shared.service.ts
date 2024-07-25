@@ -83,7 +83,7 @@ export class SharedService {
     }
 
     getAllAssignedToMe(approvedticketFetchPayLoad:any) : Observable<InproInterface>{
-        return this._http.post<InproInterface>(`/getAllApprovedRequests/${this.loggedInUser.personId}`,approvedticketFetchPayLoad);
+        return this._http.post<InproInterface>(`/getAllAssignedToMeTickets`,approvedticketFetchPayLoad);
     }
 
 }

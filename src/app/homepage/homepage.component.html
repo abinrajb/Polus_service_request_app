@@ -36,8 +36,8 @@
                         <a class="nav-link dropdown-toggle" id="dropdown01" (click)="toggleDropdown($event)" aria-expanded="false" aria-haspopup="true" aria-label="button to access admin dashboard" tabindex="1">Admin Dashboard</a>
                         <ul class="dropdown-menu" [class.show]="isDropdownVisible" aria-labelledby="dropdown01">
                             <li><a class="dropdown-item" routerLink="AdminDashboard">Dashboard</a></li>
-                            <li><a class="dropdown-item" routerLink="ip">Request In Progress</a></li>
-                            <li><a class="dropdown-item" routerLink="ar">Request Assigned</a></li>
+                            <li><a class="dropdown-item" routerLink="AdminDashboard/addService">Create new Service</a></li>
+                            <li><a class="dropdown-item" routerLink="AdminDashboard/newAdmin">Assign Admin</a></li>
                         </ul>
                     </li>
                 </ul>
@@ -67,9 +67,9 @@
                         <li class="nav-item dropdown">
                             <a class="nav-link dropdown-toggle" id="dropdown02" (click)="toggleDropdown($event)" aria-expanded="false" aria-haspopup="true">Admin Dashboard</a>
                             <ul class="dropdown-menu" [class.show]="isDropdownVisible" aria-labelledby="dropdown02">
-                                <li><a class="dropdown-item" routerLink="msr">Create Service Request</a></li>
-                                <li><a class="dropdown-item" routerLink="ip">Request In Progress</a></li>
-                                <li><a class="dropdown-item" routerLink="ar">Request Assigned</a></li>
+                                <li><a class="dropdown-item" routerLink="AdminDashboard">Dashboard</a></li>
+                                <li><a class="dropdown-item" routerLink="AdminDashboard/addService">Create new Service</a></li>
+                                <li><a class="dropdown-item" routerLink="AdminDashboard/newAdmin">Assign Admin</a></li>
                             </ul>
                         </li>
                     </ul>

@@ -7,35 +7,40 @@
 
 <div class="row justify-content-between m-3">
     <div class="btn-group d-flex" role="group">
-        <button type="button" class="btn btn-dark position-relative col-2 me-3" tabIndex="1" (click)="scrollToElement('headingInbox')" data-bs-toggle="collapse" data-bs-target="#collapseInbox" aria-expanded="false" aria-controls="collapseInbox" title="show index">
+        <button type="button" class="btn btn-dark position-relative col-2 me-3" tabIndex="1" (click)="scrollToElement('headingInbox')" 
+            data-bs-toggle="collapse" data-bs-target="#collapseInbox" aria-expanded="false" aria-controls="collapseInbox" title="show index">
             Inbox
             <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
                 {{allRequestCount.totalRequests}}
                 <span class="visually-hidden">unread messages</span>
             </span>
         </button>
-        <button type="button" class="btn btn-dark position-relative col-2 me-3" tabIndex="1" (click)="scrollToElement('headingInProgress')" data-bs-toggle="collapse" data-bs-target="#collapseInProgress" aria-expanded="true" aria-controls="collapseInProgress" title="show InProgress">
+        <button type="button" class="btn btn-dark position-relative col-2 me-3" tabIndex="1" (click)="scrollToElement('headingInProgress')" 
+            data-bs-toggle="collapse" data-bs-target="#collapseInProgress" aria-expanded="true" aria-controls="collapseInProgress" title="show InProgress">
             InProgress
             <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
                 {{allRequestCount.inProgressRequests}}
                 <span class="visually-hidden">unread messages</span>
             </span>
         </button>
-        <button type="button" class="btn btn-dark position-relative col-2 me-3" tabIndex="1" (click)="scrollToElement('headingAssigned')" data-bs-toggle="collapse" data-bs-target="#collapseAssigned" aria-expanded="false" aria-controls="collapseAssigned" title="show Assigned">
+        <button type="button" class="btn btn-dark position-relative col-2 me-3" tabIndex="1" (click)="scrollToElement('headingAssigned')" 
+            data-bs-toggle="collapse" data-bs-target="#collapseAssigned" aria-expanded="false" aria-controls="collapseAssigned" title="show Assigned">
             Assigned
             <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
                 {{allRequestCount.assignedRequests}}
                 <span class="visually-hidden">unread messages</span>
             </span>
         </button>
-        <button type="button" class="btn btn-dark position-relative col-2 me-3" tabIndex="1" data-bs-toggle="collapse" data-bs-target="#collapseApproved" aria-expanded="false" aria-controls="collapseApproved" title="show approved">
+        <button type="button" class="btn btn-dark position-relative col-2 me-3" tabIndex="1" data-bs-toggle="collapse"  
+            data-bs-target="#collapseApproved" aria-expanded="false" aria-controls="collapseApproved" title="show approved">
             Approved
             <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
                 {{allRequestCount.approvedRequests}}
                 <span class="visually-hidden">unread messages</span>
             </span>
         </button>
-        <button type="button" class="btn btn-dark position-relative col-2" tabIndex="1" data-bs-toggle="collapse" data-bs-target="#collapseRejected" aria-expanded="false" aria-controls="collapseRejected" title="show rejected">
+        <button type="button" class="btn btn-dark position-relative col-2" tabIndex="1" data-bs-toggle="collapse" 
+            data-bs-target="#collapseRejected" aria-expanded="false" aria-controls="collapseRejected" title="show rejected">
             Rejected
             <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
                 {{allRequestCount.rejectedRequests}}

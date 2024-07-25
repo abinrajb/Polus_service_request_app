@@ -116,7 +116,7 @@ export class SignupComponent implements OnInit {
                     Swal.fire({
                         position: "center",
                         icon: "success",
-                        title: "New Service Ticket Added",
+                        title: "new account created",
                         showConfirmButton: false,
                         timer: 1500
                         });
