@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { SharedService } from '../../shared.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-userprofile',
@@ -7,9 +9,26 @@ import { Component, OnInit } from '@angular/core';
 })
 export class UserprofileComponent implements OnInit {
 
-  constructor() { }
+    loggedInUser: any;
+    isEditMode: boolean = false;
 
-  ngOnInit() {
-  }
+    constructor(private _sharedService: SharedService, 
+                private _router: Router) {}
+
+    ngOnInit(): void {
+        this.checkUserAuthentication()
+        this.loggedInUser = this._sharedService.getLoggedInUser();
+    }
+
+    private checkUserAuthentication(): void {
+        const isLoggedIn = !!this._sharedService.getLoggedInUser();
+        if (!isLoggedIn) {
+          this._router.navigate(['/login']);
+        }
+      }
 
 }
+
+
+
+

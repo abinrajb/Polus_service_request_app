@@ -1,6 +1,6 @@
 .gradient-custom-2 {
     min-height: auto;
-    background: linear-gradient(to right, #1f7be4, #4ADEDE, #16e4b0,#4ADEDE,#1f7be4);
+    background: linear-gradient(to right, #FF9190,#FDC094,#FDC094,#FF9190);
     border-top-left-radius: 2%;
     border-bottom-left-radius: 2%;
 }
@@ -20,3 +20,18 @@
     max-width: 100%;
     margin: auto;
   }
+
+  .input-wrapper {
+    position: relative;
+}
+
+.input-wrapper .form-control {
+    padding-right: 3rem; 
+}
+
+.input-wrapper .btn {
+    right: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    z-index: 1; 
+}
